@@ -5,7 +5,7 @@ import { Row, Col, Image, ListGroup, Button } from 'react-bootstrap'
 import imputeSetStateApp from '../context/imputeSetStateApp';
 
 
-const Product = ({ match }) => {
+const Product = ({ history, match }) => {
 
 
     const Id = match.params.id;
@@ -63,6 +63,7 @@ const Product = ({ match }) => {
                                         imputeSetStateApp((draft) => {
                                             draft.cart.push(product);
                                         });
+                                        history.push('/cart')
                                     }}
                                 >
                                     Add to basket
