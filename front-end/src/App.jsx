@@ -8,6 +8,7 @@ import Product from './pages/Product'
 import Cart from './pages/Cart'
 import AboutUs from './pages/AboutUs'
 import ContactUs from './pages/ContactUs'
+import Account from './pages/Account'
 
 
 const App = () => {
@@ -37,6 +38,11 @@ const App = () => {
                     <Route
                         path="/about-us"
                         component={AboutUs}
+                    />
+
+                    <Route
+                        path="/account"
+                        component={Account}
                     />
                 </Container>
             </main>
