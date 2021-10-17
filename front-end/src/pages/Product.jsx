@@ -2,9 +2,11 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Row, Col, Image, ListGroup, Button } from 'react-bootstrap'
+import imputeSetStateApp from '../context/imputeSetStateApp';
 
 
 const Product = ({ match }) => {
+
 
     const Id = match.params.id;
 
@@ -40,7 +42,7 @@ const Product = ({ match }) => {
             ) : (
                 <Row>
                     <Col md={6}>
-                        <Image src={product.image} fliud />
+                        <Image src={product.image} />
                     </Col>
                     <Col md={3}>
                         <ListGroup variant="flush">
@@ -57,6 +59,11 @@ const Product = ({ match }) => {
                                 <Button
                                     className="btn-block"
                                     type="button"
+                                    onClick={() => {
+                                        imputeSetStateApp((draft) => {
+                                            draft.cart.push(product);
+                                        });
+                                    }}
                                 >
                                     Add to basket
                                 </Button>
