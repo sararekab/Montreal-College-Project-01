@@ -1,27 +1,45 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Row, Col } from 'react-bootstrap'
 
 import { AppContext } from '../context/AppContext'
+import imputeSetStateApp from '../context/imputeSetStateApp';
 
 const Home = () => {
 
     const [appState] = useContext(AppContext);
 
-    const {shop} = appState;
+    const { shop } = appState;
 
     const { loading, products } = shop
+
+    useEffect(() => {
+
+        fetch('http://localhost:8000/api/products')
+            .then(response => response.json())
+            .then(data => {
+                if(data.length > 0) {
+                    imputeSetStateApp((draft) => {
+                        draft.shop.products = data;
+                        draft.shop.loading = false;
+                    });
+                }
+            });
+
+
+    }, [])
 
 
     return (
         <div>
             <h1>Products</h1>
-            {!loading ? (
+            {loading ? (
                 <h2>Loading for fetched products ...</h2>
             ) : (
                 <Row>
                     {products.map((item) => {
                         return (
                             <Col key={item._id} sm={12} md={6} lg={4}>
+                                {item.name}
                             </Col>
                         )
                     })}
