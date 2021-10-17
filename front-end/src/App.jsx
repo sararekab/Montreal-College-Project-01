@@ -5,6 +5,9 @@ import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 import Home from './pages/Home'
 import Product from './pages/Product'
+import Cart from './pages/Cart'
+import AboutUs from './pages/AboutUs'
+import ContactUs from './pages/ContactUs'
 
 
 const App = () => {
@@ -23,7 +26,17 @@ const App = () => {
                     />
                     <Route
                         path="/cart/:id?"
-                        // component={Cart}
+                        component={Cart}
+                    />
+
+                    <Route
+                        path="/contact-us"
+                        component={ContactUs}
+                    />
+
+                    <Route
+                        path="/about-us"
+                        component={AboutUs}
                     />
                 </Container>
             </main>
