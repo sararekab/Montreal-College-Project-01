@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { Container } from 'react-bootstrap'
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
+import Home from './pages/Home'
 
 
 const App = () => {
@@ -12,7 +13,7 @@ const App = () => {
             <main className="py-3">
                 <Container>
                     <Route path="/"
-                        // component={Home}
+                        component={Home}
                         exact
                     />
                     <Route
