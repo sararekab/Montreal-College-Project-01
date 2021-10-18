@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Row, Col, Image, ListGroup, Button } from 'react-bootstrap'
+import { Row, Col, Image, ListGroup, Button, Card } from 'react-bootstrap'
 import imputeSetStateApp from '../context/imputeSetStateApp';
 
 
@@ -34,44 +34,75 @@ const Product = ({ history, match }) => {
 
     return (
         <div>
-            <Link to="/" className="btn btn-light my-3">
-                Back to Home
-            </Link>
+
             {loading ? (
                 <h2>Fetching product details...</h2>
             ) : (
-                <Row>
-                    <Col md={6}>
-                        <Image src={product.image} />
-                    </Col>
-                    <Col md={3}>
-                        <ListGroup variant="flush">
-                            <ListGroup.Item>
-                                <h3>{product.name}</h3>
-                            </ListGroup.Item>
-                            <ListGroup.Item>{product.price}</ListGroup.Item>
-                            <ListGroup.Item>{product.description}</ListGroup.Item>
-                        </ListGroup>
-                    </Col>
-                    <Col md={3}>
-                        <ListGroup variant="flush">
-                            <ListGroup.Item>
-                                <Button
-                                    className="btn-block"
-                                    type="button"
-                                    onClick={() => {
-                                        imputeSetStateApp((draft) => {
-                                            draft.cart.push(product);
-                                        });
-                                        history.push('/cart')
-                                    }}
-                                >
-                                    Add to basket
-                                </Button>
-                            </ListGroup.Item>
-                        </ListGroup>
-                    </Col>
-                </Row>
+                <>
+                    <Row>
+                        <Image src={product.image} style={{
+                            margin: 'auto',
+                            maxWidth: '400px',
+                            border: 'solid 1px gray',
+                            borderRadius: '20px',
+                            boxShadow: ' 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+                            marginBottom: '20px'
+                        }} />
+                    </Row>
+                    <Row>
+
+                        <Col >
+                            <ListGroup variant="flush">
+                                <ListGroup.Item>
+                                    <h3>{product.name}</h3>
+                                </ListGroup.Item>
+                                <ListGroup.Item>${product.price}</ListGroup.Item>
+                                <ListGroup.Item>{product.description}</ListGroup.Item>
+                            </ListGroup>
+                        </Col>
+                        <Col
+                            style={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                justifyContent: 'center'
+                            }}
+                        >
+                            <ListGroup variant="flush">
+                                <ListGroup.Item>
+                                    <Button
+                                        className="btn-block"
+                                        type="button"
+                                        onClick={() => {
+                                            imputeSetStateApp((draft) => {
+                                                draft.cart.push(product);
+                                            });
+                                            history.push('/cart')
+                                        }}
+                                    >
+                                        Add to basket
+                                    </Button>
+                                </ListGroup.Item>
+                            </ListGroup>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Card style={{ width: '95%', marginTop: '35px' }}>
+                            <Card.Body>
+                                <Card.Title>Description</Card.Title>
+                                <Card.Text>
+                                    {product.description2}
+                                </Card.Text>
+                                <Card.Text>
+                                    {product.description3}
+                                </Card.Text>
+
+                                <Link to="/" color="primary" className="btn  btn-primary my-3">
+                                    Back to Home
+                                </Link>
+                            </Card.Body>
+                        </Card>
+                    </Row>
+                </>
             )}
         </div>
     )
