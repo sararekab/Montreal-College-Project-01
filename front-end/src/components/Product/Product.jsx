@@ -4,7 +4,12 @@ import { Card } from 'react-bootstrap'
 
 const Product = ({ product }) => {
   return (
-    <Card className="my-3 p-3 rounded">
+    <Card
+      className="my-3 p-3 rounded"
+      style={{
+        boxShadow: ' 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+      }}
+    >
       <Link to={`/product/${product._id}`}>
         <Card.Img src={product.image} variant="top" />
       </Link>
@@ -15,7 +20,7 @@ const Product = ({ product }) => {
         </Link>
       </Card.Body>
 
-      <Card.Text as="h3">{product.price}</Card.Text>
+      <Card.Text as="h3">${product.price}</Card.Text>
     </Card>
   )
 }
