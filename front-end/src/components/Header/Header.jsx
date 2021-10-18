@@ -9,14 +9,14 @@ const Header = () => {
         <header>
             <Navbar className="nav-bg" variant="dark">
                 <Container>
-                    <LinkContainer to="/">
+                <LinkContainer to="/">
                         <Navbar.Brand>Montreal College Shop</Navbar.Brand>
-                    </LinkContainer>
-                    <LinkContainer to="/contact-us">
-                        <Navbar.Brand>Contact Us</Navbar.Brand>
                     </LinkContainer>
                     <LinkContainer to="/about-us">
                         <Navbar.Brand>About Us</Navbar.Brand>
+                    </LinkContainer>
+                    <LinkContainer to="/contact-us">
+                        <Navbar.Brand>Contact Us</Navbar.Brand>
                     </LinkContainer>
                     <Nav>
                         <LinkContainer to="/cart">
