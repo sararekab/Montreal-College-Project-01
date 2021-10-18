@@ -32,7 +32,7 @@ const Home = () => {
 
     return (
         <div>
-            <h1>Products</h1>
+            <h1 style={{fontSize:'x-large', fontWeight:'bold'}}>Products</h1>
             {loading ? (
                 <h2>Loading for fetched products ...</h2>
             ) : (
